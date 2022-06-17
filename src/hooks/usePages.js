@@ -1,13 +1,26 @@
-import { useMemo } from 'react';
-import { getPagesArray, getPageCount } from '../components/utils/pages';
+import { useMemo } from "react";
+import { getPagesArray } from "../components/utils/pages";
 
-export const usePages = (totalCount, limit) => {
-  console.log(totalCount);
-  const totalPages = getPageCount(totalCount, limit);
-  
-  const pagesArr = useMemo(() => {
-    return getPagesArray(totalPages)
-  }, [totalPages])
 
-  return pagesArr;
+export const usePages = (totalPages, page, changePage) => {
+  let pageBtns = useMemo( () => {
+    const pagesArray = getPagesArray(totalPages)
+    console.log(`total pages: ${totalPages}`);
+
+    return (
+      <div className="page-btns-wrapper">
+        {pagesArray.map(p => {
+          return <span 
+            className={page === p ? 'page-btn current' : 'page-btn'} 
+            key={p}
+            onClick={() => changePage(p)}
+            >
+              {p}
+            </span>
+        })}
+      </div>
+    );
+  }, [totalPages]);
+
+  return pageBtns
 }

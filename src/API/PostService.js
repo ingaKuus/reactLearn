@@ -9,7 +9,6 @@ export default class PostService {
         _page: page
       }
     })
-    return response
-    
+    return response;
   }
 }
