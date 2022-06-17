@@ -13,14 +13,16 @@ export const usePages = (totalPages, page, changePage) => {
           return <span 
             className={page === p ? 'page-btn current' : 'page-btn'} 
             key={p}
-            onClick={() => changePage(p)}
+            onClick={(e) => {
+              changePage(p)
+            }}
             >
               {p}
             </span>
         })}
       </div>
     );
-  }, [totalPages]);
+  }, [totalPages, page]);
 
   return pageBtns
 }
