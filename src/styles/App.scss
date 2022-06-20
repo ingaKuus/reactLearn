@@ -10,7 +10,9 @@ body {
 
 #root {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .App {
@@ -63,5 +65,27 @@ body {
   &.current {
     font-weight: 700;
     color: black;
+  }
+}
+
+
+
+.navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color:gainsboro;
+  padding: 0 15px;
+  margin-bottom: 25px;
+
+  &__links {
+    margin-left: auto;
+
+    a {
+      color: #000;
+      text-decoration: none;
+      padding: 0 10px;
+    }
   }
 }
