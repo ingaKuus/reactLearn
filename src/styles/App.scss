@@ -28,6 +28,10 @@ body {
   padding: 15px;
   margin-top: 20px;
 
+  &__btns {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .post-enter {
