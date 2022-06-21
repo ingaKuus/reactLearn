@@ -4,6 +4,7 @@ import {
   CSSTransition,
   TransitionGroup,
 } from 'react-transition-group';
+import { Outlet } from 'react-router-dom';
 
 const PostList = ({posts, title, remove}) => {
   

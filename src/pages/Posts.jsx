@@ -13,6 +13,7 @@ import Loader from '../components/UI/loader/Loader';
 import { useFetching } from '../hooks/useFetching';
 import { getPageCount } from '../components/utils/pages';
 import Pagination from '../components/UI/pagination/Pagination';
+import { Outlet } from 'react-router-dom';
 
 function Posts() {
   const [posts, setPosts] = useState([])
@@ -76,9 +77,6 @@ function Posts() {
         page = {page}
         changePage = {changePage}
       ></Pagination>
-      
-
-      
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Outlet } from 'react-router-dom';
 import Navbar from './components/UI/navbar/Navbar';
 import './styles/App.scss';
 import AppRouter from './components/AppRouter';
@@ -9,7 +9,6 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <AppRouter />
-      
     </BrowserRouter>
   )
 }
