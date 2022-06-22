@@ -13,13 +13,15 @@ const PostPage = () => {
 	const [fetchPostById, isPostLoading, postError] = useFetching(async (id) => {
 		const post = await PostService.getById(id);
 		setPost(post.data)
-
+	})
+	const [fetchComments, isCommentsLoading, commentsError] = useFetching(async (id) => {
 		const comments = await PostService.getComments(id);
 		setComments(comments.data)
 	})
 	
 	useEffect(() => {
 		fetchPostById(id)
+		fetchComments(id)
 	}, [])
 
 	return (
@@ -29,18 +31,23 @@ const PostPage = () => {
 			: <div>
 					<h1>{post.title}</h1>
 					<p>{post.body}</p>
-					<div className="comments" style={{marginTop: 80}}>
-						{comments.map(c => {
-							return (
-								<div className="comment" style={{marginBottom: 40}}>
-									<h3>{c.name}</h3>
-									<h4>{c.email}</h4>
-									<p>{c.body}</p>
-								</div>
-							)
-						})}
-					</div>
 				</div>}
+
+			{isPostLoading
+			? <Loader />
+			: <div className="comments" style={{marginTop: 80}}>
+				{comments.map(c => {
+					return (
+						<div className="comment" style={{marginBottom: 40}}>
+							<h3>{c.name}</h3>
+							<h4>{c.email}</h4>
+							<p>{c.body}</p>
+						</div>
+					)
+				})}
+				</div>}
+
+				
 			
 		</div>
 	);
