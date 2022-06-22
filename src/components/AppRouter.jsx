@@ -22,7 +22,7 @@ const AppRouter = () => {
 			return (
 				<Route 
 					path={r.path || ''}
-					element = {r.element || ''}
+					element = {r.element}
 					index = {r.index}
 					key = {r.path || Date.now()}
 				>
@@ -35,7 +35,6 @@ const AppRouter = () => {
 		})
 	}
 
-	console.log(drawRoutes(routes));
 	
 	return (
 		<Routes>

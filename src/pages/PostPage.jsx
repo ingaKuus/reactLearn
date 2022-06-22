@@ -36,9 +36,9 @@ const PostPage = () => {
 			{isPostLoading
 			? <Loader />
 			: <div className="comments" style={{marginTop: 80}}>
-				{comments.map(c => {
+				{comments.map((c, index) => {
 					return (
-						<div className="comment" style={{marginBottom: 40}}>
+						<div className="comment" style={{marginBottom: 40}} key={index}>
 							<h3>{c.name}</h3>
 							<h4>{c.email}</h4>
 							<p>{c.body}</p>
