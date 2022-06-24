@@ -5,26 +5,29 @@ import Posts from './../pages/Posts';
 import Error from '../pages/Error';
 import PostPage from '../pages/PostPage';
 import { useEffect } from 'react';
-import { routes } from '../router/route';
+import { privateRoutes, publicRoutes } from '../router/route';
+import { useContext } from 'react';
+import { AuthContext } from '../context';
 
 const AppRouter = () => {
+	const {isAuth, setIsAuth} = useContext(AuthContext)
 	const loc = useLocation();
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (loc.pathname === '/') {
+		if (loc.pathname === '/' && isAuth) {
 			navigate('/posts')
 		}
 	}, [])
 
 	function drawRoutes(routes = []) {
-		return routes.map( r => {
+		return routes.map( (r, i) => {
 			return (
 				<Route 
 					path={r.path || ''}
 					element = {r.element}
 					index = {r.index}
-					key = {r.path || Date.now()}
+					key = {i}
 				>
 					{r.routes
 						? drawRoutes(r.routes)
@@ -38,7 +41,11 @@ const AppRouter = () => {
 	
 	return (
 		<Routes>
-			{drawRoutes(routes)}
+			{
+				isAuth
+				? drawRoutes(privateRoutes)
+				: drawRoutes(publicRoutes)
+			}
 		</Routes>
 	);
 };
